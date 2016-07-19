@@ -1,6 +1,32 @@
 class MoviesController < ApplicationController
+
   def index
     @movies = Movie.all
+  end
+
+  def search
+    @movies = Movie.all
+    @movies = @movies.where("title like :var1", var1: params[:title]) unless params[:title].blank?
+    @movies = @movies.where("director like :var1", var1: params[:director]) unless params[:director].blank?
+    if params[:runtime_in_minutes]
+      case params[:runtime_in_minutes]
+      when "1"
+        min = 0
+        max = 89
+      when "2"
+        min = 90
+        max = 120
+      when "3"
+        min = 121
+        max = nil
+      else
+        min = nil
+        max = nil
+      end
+      @movies = @movies.where("runtime_in_minutes >= :var1", var1: min) unless min.nil?
+      @movies = @movies.where("runtime_in_minutes <= :var1", var1: max) unless max.nil?
+    end
+    render :index
   end
 
   def show
