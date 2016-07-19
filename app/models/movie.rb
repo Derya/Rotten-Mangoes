@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+
+  mount_uploader :poster_image, PosterImageUploader
+  
   has_many :reviews
   
   validates :title,
@@ -13,13 +16,14 @@ class Movie < ApplicationRecord
   validates :description,
     presence: true
 
-  validates :poster_image_url,
-    presence: true
+  # validates :poster_image,
+  #   presence: true
 
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
+
 
   def review_average
     (reviews.size == 0) ? 0 : reviews.sum(:rating_out_of_ten)/reviews.size
