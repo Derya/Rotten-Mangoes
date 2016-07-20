@@ -1,4 +1,4 @@
- <%= link_to "Back to all movies", movies_path %><br/>
+<%= link_to "Back to all movies", movies_path %><br/>
 <% if @movie.poster_image && @movie.poster_image.url %>
 <%= link_to image_tag(@movie.poster_image.url), movie_path(@movie) %>
 <% end %>
