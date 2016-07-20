@@ -19,10 +19,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def clear_shadow
+    session[:shadow_id] = nil
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def shadow_user
+    @shadow_user ||= User.find(session[:shadow_id]) if session[:shadow_id]
+  end
+
+  helper_method :shadow_user
   helper_method :current_user
 
 end

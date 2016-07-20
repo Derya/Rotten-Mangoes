@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_action :clear_shadow
+
   def new
   end
 
@@ -18,5 +21,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to movies_path, notice: "Adios!"
   end
+
+  def 
   
 end
