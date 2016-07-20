@@ -6,8 +6,8 @@ class MoviesController < ApplicationController
 
   def search
     @movies = Movie.all
-    @movies = @movies.where("title like :var1", var1: params[:title]) unless params[:title].blank?
-    @movies = @movies.where("director like :var1", var1: params[:director]) unless params[:director].blank?
+    @movies = @movies.where("title like :var1", var1: "%#{params[:title]}%") unless params[:title].blank?
+    @movies = @movies.where("director like :var1", var1: "%#{params[:director]}%") unless params[:director].blank?
     if params[:runtime_in_minutes]
       case params[:runtime_in_minutes]
       when "1"
