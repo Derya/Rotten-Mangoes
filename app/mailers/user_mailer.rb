@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def deletion_email(user)
     @user = user
-    @url  = 'http://example.com/login'
+    @url  = 'notifications@rottenmangoes.com'
     mail(to: @user.email, subject: 'You have been deleted')
   end
 
