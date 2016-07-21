@@ -1,18 +1,11 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
 
-<%= form_tag(movies_search_path, method: "get") do %>
-  <%= label_tag(:search_query, "Search:") %>
-  <%= text_field_tag(:search_query) %>
-
-  <%= label_tag(:min_runtime_in_minutes, "Minimum length in minutes:") %>
-  <%= number_field_tag(:min_runtime_in_minutes) %>
-  <%= label_tag(:max_runtime_in_minutes, "Maximum:") %>
-  <%= number_field_tag(:max_runtime_in_minutes) %>
-
-  <%= submit_tag("Search") %>
-<% end %>
-
-<% @movies.each do |movie| %>
-  <%= render partial: "movie_display", locals: {movie: movie} %>
-<% end %>
+<main class="container">
+  <h1><%= link_to "Submit a movie!", new_movie_path %></h1>
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="movie-holder col-md-6 col-sm-12">
+        <%= render partial: "movie_display", locals: {movie: movie} %>
+      </div>
+    <% end %>
+  </div>
+</main>

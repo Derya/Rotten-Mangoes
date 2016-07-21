@@ -1,8 +1,13 @@
-  <hr>
-  <% if movie.poster_image && movie.poster_image.url %>
-  <%= link_to image_tag(movie.poster_image.thumb.url), movie_path(movie) %>
-  <% end %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
+
+
+<% if movie.poster_image && movie.poster_image.url %>
+  <%= link_to image_tag(movie.poster_image.thumb.url, class:"img-responsive"), movie_path(movie) %>
+<% else %>
+  <!-- TODO -->
+<% end %>
+
+<h2><%= link_to movie.title, movie_path(movie) %></h2>
+<h3><%= movie.release_date.strftime("%b %Y") %></h3>
+<h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+<p><%= movie.description %></p>
+<p><small><%= movie.reviews.count %> reviews. Average rating: <%= movie.review_average %></small></p>
