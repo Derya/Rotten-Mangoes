@@ -21,7 +21,5 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to movies_path, notice: "Adios!"
   end
-
-  def 
   
 end
