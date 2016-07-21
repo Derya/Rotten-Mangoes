@@ -24,10 +24,14 @@ class Movie < ApplicationRecord
 
   validate :release_date_is_in_the_past
 
-  def self.runtime_within(mintime,maxtime)
-    mintime = mintime || 0
-    maxtime = maxtime || 99999999 #TODO
-    where("runtime_in_minutes <= :var1 AND runtime_in_minutes >= :var2", var1: maxtime, var2: mintime)
+  def self.duration_within(mintime,maxtime)
+    if mintime.blank?
+      where("runtime_in_minutes <= :var1", var1: maxtime)
+    elsif maxtime.blank?
+      where("runtime_in_minutes >= :var1", var1: mintime)
+    else
+      where("runtime_in_minutes <= :var1 AND runtime_in_minutes >= :var2", var1: maxtime, var2: mintime)
+    end
   end
 
   def self.title_has(query)

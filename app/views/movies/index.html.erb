@@ -4,8 +4,12 @@
 <%= form_tag(movies_search_path, method: "get") do %>
   <%= label_tag(:search_query, "Search:") %>
   <%= text_field_tag(:search_query) %>
-  <%= label_tag(:runtime_in_minutes, "Runtime:") %>
-  <%= select_tag(:runtime_in_minutes, options_for_select([['', ''], ['Under 90 minutes', 1], ['Between 90 and 120 minutes', 2],['Over 120 minutes', 3]])) %>
+
+  <%= label_tag(:min_runtime_in_minutes, "Minimum length in minutes:") %>
+  <%= number_field_tag(:min_runtime_in_minutes) %>
+  <%= label_tag(:max_runtime_in_minutes, "Maximum:") %>
+  <%= number_field_tag(:max_runtime_in_minutes) %>
+
   <%= submit_tag("Search") %>
 <% end %>
 

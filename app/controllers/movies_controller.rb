@@ -8,25 +8,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all
 
     @movies = @movies.search(params[:search_query]) unless params[:search_query].blank?
-
-    if params[:runtime_in_minutes]
-      case params[:runtime_in_minutes]
-      when "1"
-        min = 0
-        max = 89
-      when "2"
-        min = 90
-        max = 120
-      when "3"
-        min = 121
-        max = nil
-      else
-        min = nil
-        max = nil
-      end
-      @movies = @movies.runtime_within(min,max)
-    end
-
+    @movies = @movies.duration_within(params[:min_runtime_in_minutes],params[:max_runtime_in_minutes]) unless params[:max_runtime_in_minutes].blank? && params[:min_runtime_in_minutes].blank?
     render :index
   end
 
