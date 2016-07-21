@@ -6,13 +6,12 @@ class Admin::ShadowSessionsController < ApplicationController
   def create
     restrict_to_admin
 
-    if params[:user_id] != session[:user_id] && user = User.find(params[:user_id]) 
+    if params[:user_id] != session[:user_id] && user_to_be = User.find(params[:user_id]) 
       session[:shadow_id] = session[:user_id]
-      session[:user_id] = user.id
-      redirect_to movies_path, notice: "Logged in as #{user.firstname}, account #{User.find(session[:shadow_id]).firstname} in shadow mode"
+      session[:user_id] = user_to_be.id
+      redirect_to movies_path, notice: "Logged in as #{user_to_be.firstname}, account #{User.find(session[:shadow_id]).firstname} in shadow mode"
     else
-      flash.now[:alert] = "Login failed"
-      render :new
+      redirect_to admin_users_path, notice: "Login failed"
     end
   end
 

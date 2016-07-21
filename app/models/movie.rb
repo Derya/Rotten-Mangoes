@@ -38,6 +38,10 @@ class Movie < ApplicationRecord
     where("director like :var1", var1: "%#{query}%") 
   end
 
+  def self.search(query)
+    where("director like :var1 OR title like :var1", var1: "%#{query}%")
+  end
+
   def review_average
     (reviews.size == 0) ? 0 : reviews.sum(:rating_out_of_ten)/reviews.size
   end

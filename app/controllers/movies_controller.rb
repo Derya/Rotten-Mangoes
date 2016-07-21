@@ -6,8 +6,8 @@ class MoviesController < ApplicationController
 
   def search
     @movies = Movie.all
-    @movies = @movies.title_has(params[:title]) unless params[:title].blank?
-    @movies = @movies.director_has(params[:director]) unless params[:director].blank?
+
+    @movies = @movies.search(params[:search_query]) unless params[:search_query].blank?
 
     if params[:runtime_in_minutes]
       case params[:runtime_in_minutes]
