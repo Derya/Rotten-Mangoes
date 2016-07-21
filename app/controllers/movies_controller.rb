@@ -6,8 +6,9 @@ class MoviesController < ApplicationController
 
   def search
     @movies = Movie.all
-    @movies = @movies.where("title like :var1", var1: "%#{params[:title]}%") unless params[:title].blank?
-    @movies = @movies.where("director like :var1", var1: "%#{params[:director]}%") unless params[:director].blank?
+    @movies = @movies.title_has(params[:title]) unless params[:title].blank?
+    @movies = @movies.director_has(params[:director]) unless params[:director].blank?
+
     if params[:runtime_in_minutes]
       case params[:runtime_in_minutes]
       when "1"
@@ -23,9 +24,9 @@ class MoviesController < ApplicationController
         min = nil
         max = nil
       end
-      @movies = @movies.where("runtime_in_minutes >= :var1", var1: min) unless min.nil?
-      @movies = @movies.where("runtime_in_minutes <= :var1", var1: max) unless max.nil?
+      @movies = @movies.runtime_within(min,max)
     end
+
     render :index
   end
 

@@ -24,6 +24,19 @@ class Movie < ApplicationRecord
 
   validate :release_date_is_in_the_past
 
+  def self.runtime_within(mintime,maxtime)
+    mintime = mintime || 0
+    maxtime = maxtime || 99999999 #TODO
+    where("runtime_in_minutes <= :var1 AND runtime_in_minutes >= :var2", var1: maxtime, var2: mintime)
+  end
+
+  def self.title_has(query)
+    where("title like :var1", var1: "%#{query}%") 
+  end
+
+  def self.director_has(query)
+    where("director like :var1", var1: "%#{query}%") 
+  end
 
   def review_average
     (reviews.size == 0) ? 0 : reviews.sum(:rating_out_of_ten)/reviews.size
