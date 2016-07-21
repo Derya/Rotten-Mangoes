@@ -27,7 +27,7 @@ class Admin::ShadowSessionsController < ApplicationController
     else
       session[:user_id] = nil
       session[:shadow_id] = nil
-      redirect_to movies_path, notice: "Logged out."
+      redirect_to movies_path, notice: "Logged out"
     end
   end
 

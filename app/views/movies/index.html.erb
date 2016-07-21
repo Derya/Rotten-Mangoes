@@ -11,15 +11,6 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<hr>
-
 <% @movies.each do |movie| %>
-  <% if movie.poster_image && movie.poster_image.url %>
-  <%= link_to image_tag(movie.poster_image.thumb.url), movie_path(movie) %>
-  <% end %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
+  <%= render partial: "movie_display", locals: {movie: movie} %>
 <% end %>
