@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
 
   mount_uploader :poster_image, PosterImageUploader
+
+  after_save :set_color
   
   has_many :reviews
   
@@ -56,6 +58,10 @@ class Movie < ApplicationRecord
     if release_date.present?
       errors.add(:release_date, "should be in the past") if release_date > Date.today
     end
+  end
+
+  def set_color
+    
   end
 
 end

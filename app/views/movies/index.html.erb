@@ -1,14 +1,24 @@
 
-<main class="container">
-
+<main class="container-fluid">
+  <% rendered = false %>
   <% @movies.each_slice(2) do |movie_pair| %>
-    <div class="row">
+    <div class="row movie-pair">
       <%= render partial: "movie_display", locals: {movie_pair: movie_pair} %>
+      <% unless movie_pair[1] %>
+        <% rendered = true %>
+        <%= render partial: "new_movie_display" %>
+      <% end %>
     </div>
   <% end %>
-  <div class="row">
-    <%= render partial: "new_movie_display" %>
-  </div>
+  <% unless rendered %>
+    <div class="row movie-pair">
+        <div class="movie-holder-outer left col-md-6 col-sm-12">
+          <div class="movie-holder-inner left">
+          </div>
+        </div>
+      <%= render partial: "new_movie_display" %>
+    </div>
+  <% end %>
 
 </main>
 

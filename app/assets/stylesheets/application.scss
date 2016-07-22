@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -25,9 +26,35 @@
   text-align: right;
 }
 /* this makes the image expand to take up the space in the column holding it */
-.movie-holder img{
+.image-holder img{
   width:100%;
 }
+.movie-holder-outer {
+  margin-bottom:30px;
+}
+.movie-holder-inner.left {
+  float:right;
+}
+.movie-holder-inner.right {
+  float:left;
+}
+@media (min-width: 768px) {
+  .movie-holder-inner {
+      width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .movie-holder-inner {
+      width: 485px;
+  }
+}
+@media (min-width: 1200px) {
+  .movie-holder-inner {
+      width: 585px;
+  }
+}
+
+
 /*END MOVIE INDEX PAGE*/
 
 
