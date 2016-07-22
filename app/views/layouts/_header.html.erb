@@ -14,10 +14,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">foo</a></li> 
-        <li><a href="#">bar</a></li> 
-        <li><a href="#">double</a></li> 
-        <li><a href="#">triple</a></li> 
+        <li><a href="<%=new_movie_path%>">Submit</a></li>
+        <li><a href="#">Profile</a></li>
       </ul>
       <%= form_tag(movies_search_path, method: "get", class: "navbar-form navbar-right", role: "search") do %>
         <div class="form-group">

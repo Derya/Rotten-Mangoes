@@ -16,15 +16,30 @@
 
 
 
+/*MOVIE INDEX PAGE */
+/* set text align for two alignments of movie display*/
+.movie-holder.left{
+  text-align: left;
+}
+.movie-holder.right{
+  text-align: right;
+}
+/* this makes the image expand to take up the space in the column holding it */
+.movie-holder img{
+  width:100%;
+}
+/*END MOVIE INDEX PAGE*/
+
+
+
+
+/* NAVBAR */
 .navbar-nav.nav li:hover {
   /*TODO*/
   background-color:grey;
 }
 
-.movie-holder img {
-  float:left;
-}
-
 .navbar .duration-search {
   max-width: 100px;
 }
+/* END NAVBAR */

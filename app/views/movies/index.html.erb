@@ -1,11 +1,17 @@
 
 <main class="container">
-  <h1><%= link_to "Submit a movie!", new_movie_path %></h1>
+
+  <% @movies.each_slice(2) do |movie_pair| %>
+    <div class="row">
+      <%= render partial: "movie_display", locals: {movie_pair: movie_pair} %>
+    </div>
+  <% end %>
   <div class="row">
-    <% @movies.each do |movie| %>
-      <div class="movie-holder col-md-6 col-sm-12">
-        <%= render partial: "movie_display", locals: {movie: movie} %>
-      </div>
-    <% end %>
+    <%= render partial: "new_movie_display" %>
   </div>
+
 </main>
+
+
+
+

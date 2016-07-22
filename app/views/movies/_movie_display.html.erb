@@ -1,13 +1,41 @@
+<% movie_left, movie_right = movie_pair %>
 
+<div class="movie-holder left col-md-6 col-sm-12">
+  <div class="row">
+    <div class="col-md-5 image-holder" style="background-color:red">
+      <% if movie_left.poster_image && movie_left.poster_image.thumb.url %>
+        <%= link_to image_tag(movie_left.poster_image.url), movie_path(movie_left) %>
+      <% else %>
+        <img src="/thumb_movie-poster-template.jpg" class="img-responsive"/>
+      <% end %>
+    </div>
 
-<% if movie.poster_image && movie.poster_image.url %>
-  <%= link_to image_tag(movie.poster_image.thumb.url, class:"img-responsive"), movie_path(movie) %>
-<% else %>
-  <!-- TODO -->
-<% end %>
+    <div class="col-md-7 info-holder" style="background-color:pink">
+      <h2><%= link_to movie_left.title, movie_path(movie_left) %></h2>
+      <h3><%= movie_left.release_date.strftime("%b %Y") %></h3>
+      <h4>Dir. <%= movie_left.director %> | <%= movie_left.runtime_in_minutes %> minutes</h4>
+      <p><%= movie_left.description %></p>
+      <p><small><%= movie_left.reviews.count %> reviews. Average rating: <%= movie_left.review_average %></small></p>
+    </div>
+  </div>
+</div>
 
-<h2><%= link_to movie.title, movie_path(movie) %></h2>
-<h3><%= movie.release_date.strftime("%b %Y") %></h3>
-<h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-<p><%= movie.description %></p>
-<p><small><%= movie.reviews.count %> reviews. Average rating: <%= movie.review_average %></small></p>
+<div class="movie-holder right col-md-6 col-sm-12">
+  <div class="row">
+    <div class="col-md-5 image-holder" style="background-color:red">
+      <% if movie_right.poster_image && movie_right.poster_image.thumb.url %>
+        <%= link_to image_tag(movie_right.poster_image.url), movie_path(movie_right) %>
+      <% else %>
+        <img src="/thumb_movie-poster-template.jpg" class="img-responsive"/>
+      <% end %>
+    </div>
+
+    <div class="col-md-7 info-holder" style="background-color:pink">
+      <h2><%= link_to movie_right.title, movie_path(movie_right) %></h2>
+      <h3><%= movie_right.release_date.strftime("%b %Y") %></h3>
+      <h4>Dir. <%= movie_right.director %> | <%= movie_right.runtime_in_minutes %> minutes</h4>
+      <p><%= movie_right.description %></p>
+      <p><small><%= movie_right.reviews.count %> reviews. Average rating: <%= movie_right.review_average %></small></p>
+    </div>
+  </div>
+</div>
