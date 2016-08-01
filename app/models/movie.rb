@@ -2,7 +2,7 @@ class Movie < ApplicationRecord
 
   mount_uploader :poster_image, PosterImageUploader
 
-  after_save :set_color
+  before_save :set_color
   
   has_many :reviews
   
@@ -17,9 +17,6 @@ class Movie < ApplicationRecord
 
   validates :description,
     presence: true
-
-  # validates :poster_image,
-  #   presence: true
 
   validates :release_date,
     presence: true
@@ -49,22 +46,19 @@ class Movie < ApplicationRecord
   end
 
   def review_average
-    (reviews.size == 0) ? 0 : reviews.sum(:rating_out_of_ten)/reviews.size
+    (reviews.size == 0) ? 0 : reviews.sum(:rating_out_of_ten) / reviews.size
   end
 
   protected
 
   def release_date_is_in_the_past
-    if release_date.present?
-      errors.add(:release_date, "should be in the past") if release_date > Date.today
+    if release_date.present? && release_date > Date.today
+      errors.add(:release_date, "should be in the past")
     end
   end
 
   def set_color
-    self.color = SecureRandom.hex(3)      m        
-
-    v      
-    \]
+    self.color = rand(16777216)
   end
 
 end

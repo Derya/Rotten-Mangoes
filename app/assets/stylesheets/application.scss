@@ -30,7 +30,9 @@
   width:100%;
 }
 .movie-holder-outer {
-  margin-bottom:30px;
+  padding-top:15px;
+  padding-bottom:15px;
+  background-clip: padding-box;
 }
 .movie-holder-inner.left {
   float:right;

@@ -1,6 +1,5 @@
 <% movie_left, movie_right = movie_pair %>
-
-<div class="movie-holder-outer left col-md-6 col-sm-12">
+<div class="movie-holder-outer left col-md-6 col-sm-12" data-color="#<%= movie_left.color.to_s(16) %>">
   <div class="movie-holder-inner left">
     <div class="row">
       <div class="col-md-5 col-sm-5 col-xs-12 image-holder">
@@ -23,7 +22,7 @@
 </div>
 
 <% if movie_right %>
-<div class="movie-holder-outer right col-md-6 col-sm-12">
+<div class="movie-holder-outer right col-md-6 col-sm-12" data-color="#<%= movie_right.color.to_s(16) %>">
   <div class="movie-holder-inner right">
     <div class="row">
       <div class="col-md-7 col-sm-7 col-xs-12 info-holder">
