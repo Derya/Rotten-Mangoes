@@ -61,7 +61,10 @@ class Movie < ApplicationRecord
   end
 
   def set_color
-    
+    self.color = SecureRandom.hex(3)      m        
+
+    v      
+    \]
   end
 
 end
