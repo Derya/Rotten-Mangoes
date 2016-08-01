@@ -25,10 +25,10 @@ $(function() {
     left.css("background-color",left.data("color"));
     right.css("background-color",right.data("color"));
 
-    if (left.height() < right.height()) {
-      $(this).css("background-color",left.css("background-color"));
-    } else {
+    if (left.height() > right.height()) {
       $(this).css("background-color",right.css("background-color"));
+    } else {
+      $(this).css("background-color",left.css("background-color"));
     }
   });
 

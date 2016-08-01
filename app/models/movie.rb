@@ -58,6 +58,7 @@ class Movie < ApplicationRecord
   end
 
   def set_color
+    # img = MiniMagick::Image.open(self.poster_image.file.file)
     self.color = rand(16777216)
   end
 
