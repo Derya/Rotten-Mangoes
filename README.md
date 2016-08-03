@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a WIP. Most features are implemented in their barebones state, however little UX and styling work has been done.
 
-Things you may want to cover:
+# Setup:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* prerequisites: ruby 2, ruby on rails 5, and bundler
+* bundle install
+* rails db:migrate
+* rails s
+* visit localhost:3000
